@@ -1,3 +1,6 @@
+import 'package:random_quote_generator_flutter/main.dart';
+import 'dart:math';
+
 import 'quote.dart';
 
 class QuoteBrain {
@@ -5,7 +8,7 @@ class QuoteBrain {
 
   List<Quote> _quoteData = [
     Quote("No one can make you feel inferior without your consent.",
-        "Eleanor Roosevelt,"),
+        "Eleanor Roosevelt"),
     Quote(
         "It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it.",
         "Maurice Switzer"),
@@ -36,4 +39,24 @@ class QuoteBrain {
         "By three methods we may learn wisdom: First, by reflection, which is noblest; Second, by imitation, which is easiest; and third by experience, which is the bitterest.",
         "Confucius"),
   ];
+
+  String getQuoteText() {
+    return _quoteData[_quoteNumber].quote;
+  }
+
+  String getQuoteAuthor() {
+    return " -- " + _quoteData[_quoteNumber].author;
+  }
+
+  void reset() {
+    _quoteNumber = 0;
+  }
+
+  nextQuote() {
+    if (_quoteNumber < _quoteData.length - 1) {
+      _quoteNumber++;
+    } else {
+      reset();
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quoteBrain.dart';
 
 void main() {
   runApp(RamdomQuoteGenerator());
@@ -8,7 +9,6 @@ class RamdomQuoteGenerator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -17,6 +17,8 @@ class RamdomQuoteGenerator extends StatelessWidget {
     );
   }
 }
+
+QuoteBrain randomQuotes = QuoteBrain();
 
 class QuotePage extends StatefulWidget {
   QuotePage({Key key, this.title}) : super(key: key);
@@ -27,38 +29,66 @@ class QuotePage extends StatefulWidget {
 }
 
 class _QuotePageState extends State<QuotePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  randomQuotes.getQuoteText(),
+                  style: TextStyle(
+                    fontSize: 30.0,
+                    fontFamily: "Source Sans Pro",
+                  ),
+                ),
+              ),
+              Center(
+                child: Text(
+                  randomQuotes.getQuoteAuthor(),
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontFamily: "Satisfy",
+                  ),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        randomQuotes.nextQuote();
+                      });
+                    },
+                    color: Colors.blue,
+                    textColor: Colors.white,
+                    padding: EdgeInsets.all(20.0),
+                    splashColor: Colors.blueAccent,
+                    child: Text(
+                      "Get Random Quote",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
