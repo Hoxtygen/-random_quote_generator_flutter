@@ -37,7 +37,13 @@ class _QuotePageState extends State<QuotePage> {
         title: Text(widget.title),
       ),
       body: Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/background.png"),
+            fit: BoxFit.fill,
+          ),
+        ),
+        // color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -51,6 +57,7 @@ class _QuotePageState extends State<QuotePage> {
                   style: TextStyle(
                     fontSize: 30.0,
                     fontFamily: "Source Sans Pro",
+                    color: Colors.white,
                   ),
                 ),
               ),
@@ -60,6 +67,7 @@ class _QuotePageState extends State<QuotePage> {
                   style: TextStyle(
                     fontSize: 20.0,
                     fontFamily: "Satisfy",
+                    color: Colors.white,
                   ),
                 ),
               ),
