@@ -23,7 +23,7 @@ class QuoteBrain {
         "The saddest aspect of life right now is that science gathers knowledge faster than society gathers wisdom.",
         " Isaac Asimov"),
     Quote(
-        "Hold fast to dreams,For if dreams dieLife is a broken-winged bird,That cannot fly.",
+        "Hold fast to dreams,For if dreams die, Life is a broken-winged bird,That cannot fly.",
         "Langston Hughes"),
     Quote(
         "It is the mark of an educated mind to be able to entertain a thought without accepting it.",
@@ -53,10 +53,8 @@ class QuoteBrain {
   }
 
   nextQuote() {
-    if (_quoteNumber < _quoteData.length - 1) {
-      _quoteNumber++;
-    } else {
-      reset();
-    }
+    int max = _quoteData.length;
+    Random random = new Random();
+    _quoteNumber = random.nextInt(max);
   }
 }

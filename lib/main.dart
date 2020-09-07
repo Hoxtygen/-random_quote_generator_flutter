@@ -10,7 +10,7 @@ class RamdomQuoteGenerator extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: QuotePage(title: 'Random Quote Generator'),
@@ -72,10 +72,9 @@ class _QuotePageState extends State<QuotePage> {
                         randomQuotes.nextQuote();
                       });
                     },
-                    color: Colors.blue,
+                    color: Colors.blue.shade900,
                     textColor: Colors.white,
                     padding: EdgeInsets.all(20.0),
-                    splashColor: Colors.blueAccent,
                     child: Text(
                       "Get Random Quote",
                       style: TextStyle(
